@@ -1,0 +1,51 @@
+[project]
+name = "secure-incidents-api"
+version = "1.0.0"
+description = "In-memory CRUD API with a complete DevSecOps delivery workflow"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "fastapi>=0.141.1,<0.142",
+    "uvicorn[standard]>=0.52.4,<0.53",
+]
+
+[dependency-groups]
+dev = [
+    "bandit>=1.8,<2",
+    "httpx>=0.28,<0.29",
+    "pip-audit>=2.9,<3",
+    "pytest>=9.0.3,<10",
+    "pytest-cov>=6.2,<8",
+    "ruff>=0.12,<0.15",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --strict-config"
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["app"]
+
+[tool.coverage.report]
+exclude_also = [
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+]
+show_missing = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.bandit]
+exclude_dirs = ["tests"]
