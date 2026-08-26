@@ -56,6 +56,10 @@ Zatrzymanie z usunięciem woluminów:
 docker compose down -v
 ```
 
+### Healthchecks
+- `/health/live` potwierdza, że proces aplikacji działa.
+- `/health/ready` potwierdza gotowość aplikacji i zwraca liczbę rekordów znajdujących się w pamięci.
+
 ### Logi
 Aplikacja zapisuje strukturalne logi JSON na **stdout**. Logi requestów zawierają między innymi:
 - czas w UTC,
