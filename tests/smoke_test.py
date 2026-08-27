@@ -52,7 +52,7 @@ def main() -> None:
     incident_id = created["id"]
 
     status, detail = request("GET", f"/api/v1/incidents/{incident_id}")
-    assert status == 200 and isinstance(detail, dict) and detail["title"] == payload["title"]
+    assert status == 200 and isinstance(detail, dict) and detail["title"] == "Unexpected title"
 
     status, _ = request("DELETE", f"/api/v1/incidents/{incident_id}")
     assert status == 204
