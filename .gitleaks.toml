@@ -1,0 +1,10 @@
+title = "Quality Gate negative test"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "quality-gate-negative-test"
+description = "Synthetic marker used to verify secret detection"
+regex = '''NEGATIVE_TEST_SECRET_[A-Z0-9]{20}'''
+keywords = ["NEGATIVE_TEST_SECRET_"]
