@@ -117,6 +117,14 @@ Jako wymagane status checks należy wskazać:
 
 Po włączeniu reguły lokalne commity oraz push do gałęzi roboczych pozostają dozwolone, ale bezpośredni push do domyślnej gałęzi jest blokowany. Zmiany muszą zostać przesłane przez Pull Request. Trigger `pull_request` w `.github/workflows/ci.yml` uruchamia Quality Gate po utworzeniu oraz każdej aktualizacji PR, a merge pozostaje zablokowany do czasu pomyślnego zakończenia wszystkich wymaganych kontroli.
 
+### Weryfikacja Quality Gate
+Działanie bramek zostało zweryfikowane przez kontrolowane testy negatywne:
+- regresja REST API została wykryta przez testy aplikacji — [PR #2](https://github.com/DawidFerchow/secure-incidents-api/pull/2),
+- syntetyczny sekret został wykryty przez Gitleaks — [PR #3](https://github.com/DawidFerchow/secure-incidents-api/pull/3),
+- nieprawidłowe oczekiwanie smoke testu zostało wykryte po uruchomieniu kontenera — [PR #4](https://github.com/DawidFerchow/secure-incidents-api/pull/4).
+
+Testowe PR-y zostały zamknięte bez merge. Nie zawierały prawdziwych sekretów ani celowo podatnych zależności.
+
 ## Wybrane narzędzia z uzasadnieniem
 
 | Narzędzie                 | Rola                                             | Dlaczego ten wybór                                                                                                                                                                                                            |
