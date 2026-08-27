@@ -4,7 +4,8 @@ import logging
 from typing import Annotated, cast
 
 from fastapi import APIRouter, Depends, HTTPException, Path, Query, Request, Response
-from starlette.status import HTTP_201_CREATED, HTTP_204_NO_CONTENT, HTTP_404_NOT_FOUND
+# from starlette.status import HTTP_201_CREATED, HTTP_204_NO_CONTENT, HTTP_404_NOT_FOUND
+from starlette.status import HTTP_204_NO_CONTENT, HTTP_404_NOT_FOUND
 
 from app.models import (
     Incident,
@@ -57,7 +58,8 @@ def get_incident(incident_id: IncidentId, store: Store) -> Incident:
     return incident
 
 
-@router.post("", response_model=Incident, status_code=HTTP_201_CREATED)
+# @router.post("", response_model=Incident, status_code=HTTP_201_CREATED)
+@router.post("", response_model=Incident, status_code=200)
 def create_incident(data: IncidentCreate, store: Store) -> Incident:
     incident = store.create(data)
     logger.info("incident_created", extra={"incident_id": incident.id})
